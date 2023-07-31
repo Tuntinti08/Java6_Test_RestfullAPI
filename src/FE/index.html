@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CRUD</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+      crossorigin="anonymous"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+  </head>
+  <body ng-app="app" ng-controller="ctrl">
+    <!-- phạm vi giao diện -->
+    <!-- form -->
+    <div class="container">
+      <h2 style="text-align: center">RESTFULL Consumer - AngularJS</h2>
+
+      <form>
+        <div class="mb-3">
+          <label for="" class="form-label">Email address</label>
+          <input
+            ng-model="form.email"
+            class="form-control"
+            id="exampleInputEmail1"
+            aria-describedby="emailHelp"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="" class="form-label">Full name</label>
+          <input
+            ng-model="form.fullname"
+            class="form-control"
+            id="exampleInputPassword1"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="" class="form-label">Average Marks</label>
+          <input
+            ng-model="form.marks"
+            class="form-control"
+            id="exampleInputPassword1"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="" class="form-label">Country</label>
+          <select ng-model="form.country" class="form-select">
+            <option value="Việt Nam">Việt Nam</option>
+            <option value="United States">United States</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <input ng-model="form.gender" ng-value="true" type="radio" /> Male
+          <input ng-model="form.gender" ng-value="false" type="radio" /> Female
+        </div>
+      </form>
+      <hr />
+      <button class="btn btn-success" ng-click="create()">Create</button>
+      <button class="btn btn-primary" ng-click="update()">Update</button>
+      <button class="btn btn-danger" ng-click="delete(form.email)">
+        Delete
+      </button>
+      <button class="btn btn-info" ng-click="reset()">Reset</button>
+
+      <hr />
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Email Address</th>
+            <th scope="col">Full Name</th>
+            <th scope="col">Marks</th>
+            <th scope="col">Gender</th>
+            <th scope="col">Country</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="stu in items">
+            <td>{{stu.email}}</td>
+            <td>{{stu.fullname}}</td>
+            <td>{{stu.marks}}</td>
+            <td>{{stu.gender?'Male':'Female'}}</td>
+            <td>{{stu.country}}</td>
+            <td>
+              <button class="btn btn-warning" ng-click="edit(stu.email)">
+                Edit
+              </button>
+              <button class="btn btn-danger" ng-click="delete(stu.email)">
+                Delete
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>
